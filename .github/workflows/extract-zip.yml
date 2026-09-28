@@ -11,20 +11,19 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Extract Client.zip
         run: |
-          mkdir -p extracted
           unzip -o Client.zip -d extracted
 
-      - name: Move extracted files
+      - name: Copy extracted files
         run: |
           cp -r extracted/* .
           rm -rf extracted
 
-      - name: Commit extracted files
+      - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
